@@ -45,7 +45,7 @@ navigation = function (options) {
 
     output = navigationData.map(function (e) {
         var out = {};
-        out.current = e.url === currentUrl;
+        out.current = (e.url === currentUrl || (e.url !== "/" && new RegExp(e.url).test(currentUrl)));
         out.label = e.label;
         out.slug = _slugify(e.label);
         out.url = hbs.handlebars.Utils.escapeExpression(e.url);
