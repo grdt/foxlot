@@ -219,6 +219,10 @@ function renderChannel(channelOpts) {
                         result = formatPageResponse(posts, page);
                     }
 
+                    if (channelOpts.post){
+                        result.post = channelOpts.post;
+                    }
+
                     setResponseContext(req, res);
                     res.render(view, result);
                 });
@@ -233,6 +237,22 @@ frontendControllers = {
         route: '/',
         firstPageTemplate: 'home'
     }),
+    blog: function(req, res, next){
+        var post;
+        api.posts.read({slug: "blog", include: "author,tags,fields"}).then(function(result){
+            post = result.posts[0];
+
+            renderChannel(
+                {
+                    name: "blog",
+                    route: "/blog",
+                    firstPageTemplate: "index",
+                    post: post
+                }
+            )(req, res, next)
+
+        })
+    },
     tag: renderChannel({
         name: 'tag',
         route: '/' + config.routeKeywords.tag + '/:slug/',

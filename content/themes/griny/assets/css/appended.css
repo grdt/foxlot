@@ -1,0 +1,7 @@
+#welcome{
+    display: none;
+}
+
+body.home-template #welcome{
+    display: block;
+}

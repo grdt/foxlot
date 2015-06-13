@@ -67,6 +67,9 @@ frontendRoutes = function (middleware) {
     // Default
     router.get('/' + routeKeywords.page + '/:page/', frontend.homepage);
     router.get('/', frontend.homepage);
+    router.get('/blog', frontend.blog);
+    router.get('/blog/page/:page/', frontend.blog);
+    router.get('/blog/:slug/', frontend.single);
     router.get('*', frontend.single);
 
     return router;

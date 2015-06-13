@@ -1,0 +1,23 @@
+
+{{#if prev}}
+    <div class="pagination">
+        <ul>
+            <li class="{{#unless prev}}disabled{{/unless}}"><a href="/blog{{page_url prev}}">Раньше</a></li>
+            <li class="disabled"><a href="">Страница {{page}} из {{pages}}</a></li>
+            <li class="{{#unless next}}disabled{{/unless}}"><a href="/blog{{page_url next}}">Позже</a></li>
+        </ul>
+    </div>
+{{else}}
+    {{#if next}}
+        <div class="pagination">
+            <ul>
+                <li class="{{#unless prev}}disabled{{/unless}}"><a href="/blog{{page_url prev}}">Раньше</a></li>
+                <li class="disabled"><a href="">Страница {{page}} из {{pages}}</a></li>
+                <li class="{{#unless next}}disabled{{/unless}}"><a href="/blog{{page_url next}}">Позже</a></li>
+            </ul>
+        </div>
+    {{else}}
+
+    {{/if}}
+{{/if}}
+

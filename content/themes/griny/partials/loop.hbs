@@ -1,0 +1,55 @@
+{{#foreach posts}}
+
+    {{#if @first}}
+        <li class="span12">
+            <div class="thumbnail">
+                {{#if image}}
+                    <div class="img-wrap">
+                        <a href="{{url}}"><img src="{{image}}" alt="{{title}}"/></a>
+                    </div>
+                {{/if}}
+                <h3>{{split title separator="/" index=0}}</h3>
+
+                <div class="info-panel clearfix">
+                    <span class="pull-left"><time datetime=""><i class="icon-calendar "></i> {{date format='DD/MM, YYYY'}}</time></span>
+                    <span class="pull-right"><i class="icon-user"></i> {{author.name}} </span>
+                </div>
+                <p>{{excerpt words="26"}}</p>
+                <a class="btn pull-right" href="{{url}}">Читать</a>
+            </div>
+        </li>
+
+    {{else}}
+
+        {{#if @even}}
+            <div class="row">
+        {{/if}}
+
+            <li class="span6">
+                <div class="thumbnail">
+                    {{#if image}}
+                        <div class="img-wrap">
+                            <a href="{{url}}"><img src="{{image}}" alt="{{title}}"/></a>
+                        </div>
+                    {{/if}}
+                    <h3>{{split title separator="/" index=0}}</h3>
+
+                    <div class="info-panel clearfix">
+                    <span class="pull-left"><time datetime=""><i class="icon-calendar "></i> {{date format='DD/MM, YYYY'}}
+                    </time></span>
+                    <span class="pull-right"><i class="icon-user"></i> {{author.name}} </span>
+                    </div>
+                    <p>{{excerpt words="26"}}</p>
+                    <a class="btn pull-right" href="{{url}}">Читать</a>
+                </div>
+            </li>
+
+        {{#if @odd}}
+
+            </div>
+
+        {{/if}}
+    {{/if}}
+
+
+{{/foreach}}
