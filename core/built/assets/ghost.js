@@ -3301,13 +3301,13 @@ define('ghost/controllers/settings/general', ['exports', 'ember', 'ghost/utils/r
         isDatedPermalinks: Ember['default'].computed("model.permalinks", function (key, value) {
             // setter
             if (arguments.length > 1) {
-                this.set("model.permalinks", value ? "/:year/:month/:day/:slug/" : "/:slug/");
+                this.set("model.permalinks", value ? "/:year/:month/:day/:slug/" : "/blog/:slug/");
             }
 
             // getter
             var slugForm = this.get("model.permalinks");
 
-            return slugForm !== "/:slug/";
+            return slugForm !== "/blog/:slug/";
         }),
 
         themes: Ember['default'].computed(function () {
@@ -22056,7 +22056,7 @@ define('ghost/tests/unit/controllers/settings-general_test', ['ember', 'ember-mo
             expect(controller.get("isDatedPermalinks")).to.be.ok;
 
             Ember['default'].run(function () {
-                controller.set("model.permalinks", "/:slug/");
+                controller.set("model.permalinks", "/blog/:slug/");
 
                 expect(controller.get("isDatedPermalinks")).to.not.be.ok;
             });
@@ -22073,7 +22073,7 @@ define('ghost/tests/unit/controllers/settings-general_test', ['ember', 'ember-mo
                 controller.set("isDatedPermalinks", false);
 
                 expect(controller.get("isDatedPermalinks")).to.not.be.ok;
-                expect(controller.get("model.permalinks")).to.equal("/:slug/");
+                expect(controller.get("model.permalinks")).to.equal("/blog/:slug/");
             });
 
             Ember['default'].run(function () {
