@@ -7,8 +7,11 @@ var split = function (content, options) {
 
     var separator = options.hash && _.isString(options.hash.separator) ? options.hash.separator : '',
     index = options.hash && options.hash.index ? options.hash.index : 0;
-
-    return content.split(separator)[index];
+    if (content) {
+        return content.split(separator)[index];
+    } else {
+        return content;
+    }
 };
 
 module.exports = split;
